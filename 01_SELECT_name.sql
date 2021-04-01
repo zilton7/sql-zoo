@@ -1,5 +1,4 @@
--- https://sqlzoo.net/wiki/SQL_Tutorial
---  1 SELECT name
+-- https://sqlzoo.net/wiki/SELECT_names
 -- 1
 SELECT name FROM world
   WHERE name LIKE 'Y%'
