@@ -54,4 +54,21 @@ JOIN actor ON actor.id = actorid
 WHERE ord=1 AND movieid IN (SELECT movieid FROM casting 
 JOIN actor ON actor.id=actorid WHERE name='julie andrews') 
 -- 13
-
+SELECT name FROM actor
+JOIN casting ON (id=actorid AND 
+                    (SELECT COUNT(ord) FROM casting 
+                        WHERE actorid = actor.id AND ord=1)>=15
+                ) 
+GROUP BY name
+-- 14
+SELECT title, COUNT(actorid) FROM movie
+JOIN casting ON movie.id = movieid 
+JOIN actor ON actor.id = actorid
+WHERE yr = 1978
+GROUP BY title
+ORDER BY COUNT(actorid) DESC, title
+-- 15
+SELECT  distinct name FROM actor
+JOIN casting ON id=actorid
+WHERE movieid IN (SELECT movieid FROM casting JOIN actor ON (actorid=id AND name='art garfunkel')) 
+AND name != 'art garfunkel' 
