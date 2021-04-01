@@ -40,3 +40,20 @@ SELECT yr, subject, winner
 FROM nobel
 WHERE subject = 'Medicine' AND yr < 1910 OR subject = 'literature' AND yr >= 2004
 -- 11
+SELECT *
+FROM nobel
+WHERE winner LIKE 'Peter Gr_nberg'
+-- 12
+SELECT *
+FROM nobel
+WHERE winner LIKE 'Eugene o_neill'
+-- 13
+SELECT winner, yr, subject
+FROM nobel
+WHERE winner LIKE 'Sir%' ORDER BY yr DESC
+-- 14
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject IN ('Physics','Chemistry'), subject,winner
+
